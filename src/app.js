@@ -1,3 +1,4 @@
+// app.js
 import express from 'express'
 import cors from 'cors'
 import dotenv from 'dotenv'
@@ -15,18 +16,26 @@ dotenv.config()
 
 const app = express()
 
+// Middlewares
 app.use(cors({ origin: process.env.CORS_ORIGIN || 'http://localhost:5173' }))
-app.use(compression());
+app.use(compression())
 app.use(express.json())
 
+// Ruta de prueba general
+app.get('/api', (_req, res) => {
+  res.json({ message: "API funcionando" })
+})
+
+// Ruta raíz solo para ver que el servidor está arriba
 app.get('/', (_req, res) => { res.send('El servidor funciona') })
 app.get('/health', (_req, res) => { res.json({ ok: true }) })
 
-app.use("/", activityRoutes);
-app.use('/auth', authRoutes);
-app.use('/me', meRoutes);
-app.use('/proyectos', projectsRoutes);
-app.use('/', tasksRoutes)
-app.use("/", filesRoutes)
+// Rutas del backend bajo /api
+app.use("/api", activityRoutes)
+app.use('/api/auth', authRoutes)
+app.use('/api/me', meRoutes)
+app.use('/api/proyectos', projectsRoutes)
+app.use('/api/tasks', tasksRoutes)
+app.use("/api/files", filesRoutes)
 
 export default app
