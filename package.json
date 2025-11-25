@@ -1,0 +1,28 @@
+{
+  "name": "saas-backend",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "src/server.js",
+  "scripts": {
+    "dev": "node --watch src/server.js",
+    "start": "node src/server.js"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.937.0",
+    "@ibm-cloud/cloudant": "^0.8.1",
+    "axios": "^1.7.7",
+    "compression": "^1.8.1",
+    "cors": "^2.8.5",
+    "csv-parse": "^6.1.0",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-fileupload": "^1.5.2",
+    "ibm-cloud-sdk-core": "^4.1.2",
+    "jsonwebtoken": "^9.0.2",
+    "jwks-rsa": "^3.1.0",
+    "multer": "^2.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  }
+}
